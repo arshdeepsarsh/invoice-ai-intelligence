@@ -8,7 +8,7 @@ export default function Logs() {
   const [sortOrder, setSortOrder] = useState("desc")
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/logs")
+    fetch("https://invoice-ai-intelligence.onrender.com/logs")
       .then(res => res.json())
       .then(data => {
         setLogs(data)
@@ -71,7 +71,7 @@ export default function Logs() {
 
         <button
           onClick={() =>
-            window.open("http://127.0.0.1:8000/export-csv", "_blank")
+            window.open("https://invoice-ai-intelligence.onrender.com/export-csv", "_blank")
           }
           className="bg-gradient-to-r from-green-600 to-emerald-600 px-5 py-3 rounded-lg hover:scale-105 transition font-semibold"
         >

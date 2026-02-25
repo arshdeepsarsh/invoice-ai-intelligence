@@ -19,7 +19,7 @@ export default function Process() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/process-invoice/",
+        "https://invoice-ai-intelligence.onrender.com/process-invoice/",
         {
           method: "POST",
           body: formData,

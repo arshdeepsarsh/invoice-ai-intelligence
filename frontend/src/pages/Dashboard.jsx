@@ -20,7 +20,7 @@ export default function Dashboard() {
   })
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/logs")
+    fetch("https://invoice-ai-intelligence.onrender.com/logs")
       .then((res) => res.json())
       .then((data) => {
         setLogs(data)
