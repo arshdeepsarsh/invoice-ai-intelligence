@@ -9,6 +9,16 @@ A full-stack AI-powered invoice automation system built using:
 
 ---
 
+## 💼 Business Value
+
+- Reduces manual invoice entry time
+- Improves extraction accuracy with AI
+- Eliminates dependency on external APIs
+- Keeps financial data fully local & secure
+- Provides analytics for vendor spending insights
+
+---
+
 ## 🔥 Features
 
 - Upload single or multiple invoice PDFs
@@ -268,5 +278,14 @@ ollama serve
 ## 🎯 Goal
 
 Automate invoice data entry for accounting teams using local AI.
+---
+
+## 🎯 Target Users
+
+- Accounting Firms
+- SMEs managing vendor invoices
+- Finance Teams
+- Freelance Bookkeepers
+- Businesses handling bulk PDF invoices
 
 ---
