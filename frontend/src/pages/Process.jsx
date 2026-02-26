@@ -19,7 +19,7 @@ export default function Process() {
 
     try {
       const response = await fetch(
-        "https://invoice-ai-intelligence.onrender.com/process-invoice/",
+        "http://localhost:8000/process-invoice/",
         {
           method: "POST",
           body: formData,

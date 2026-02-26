@@ -1,24 +1,24 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from typing import List
 from datetime import datetime
 import shutil
 import os
 import json
 import csv
+import time
 
 from ocr import extract_text_from_pdf
 from extractor import extract_invoice_data
-from utils import clean_amount, save_invoice_log
+from utils import clean_amount, save_invoice_log, calculate_accuracy
 
 app = FastAPI(
     title="AI Invoice Intelligence API",
-    version="1.0.0"
+    version="2.0.0"
 )
 
 # -------------------------
-# CORS (Allow Frontend)
+# CORS
 # -------------------------
 app.add_middleware(
     CORSMiddleware,
@@ -31,26 +31,21 @@ app.add_middleware(
 LOG_FILE = "logs/invoice_logs.json"
 
 
-# -------------------------
-# Health Check
-# -------------------------
 @app.get("/")
 def root():
-    return {"status": "API running"}
+    return {"status": "AI Invoice API running"}
 
 
-# -------------------------
-# Batch Invoice Processing
-# -------------------------
 @app.post("/process-invoice/")
-async def process_invoice(files: List[UploadFile] = File(...)):
+async def process_invoice(files: list[UploadFile] = File(...)):
 
     results = []
-
     os.makedirs("uploads", exist_ok=True)
     os.makedirs("logs", exist_ok=True)
 
     for file in files:
+
+        start_time = time.time()
 
         file_location = f"uploads/{file.filename}"
 
@@ -60,17 +55,14 @@ async def process_invoice(files: List[UploadFile] = File(...)):
         text = extract_text_from_pdf(file_location)
         data = extract_invoice_data(text)
 
-        cleaned_amount = clean_amount(
-            data.get("amount") or data.get("total_amount") or 0
-        )
+        cleaned_amount = clean_amount(data.get("amount"))
+        cleaned_tax = clean_amount(data.get("tax"))
 
-        cleaned_tax = clean_amount(
-            data.get("tax") or data.get("tax_amount") or 0
-        )
-        raw_conf = data.get("confidence") or data.get("confidence_score") or 0
-
+        raw_conf = data.get("confidence") or 0
         if raw_conf > 1:
             raw_conf = raw_conf / 100
+
+        processing_time = round(time.time() - start_time, 2)
 
         invoice_record = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -80,7 +72,9 @@ async def process_invoice(files: List[UploadFile] = File(...)):
             "invoice_date": data.get("invoice_date"),
             "amount": cleaned_amount,
             "tax": cleaned_tax,
-            "confidence": raw_conf
+            "confidence": raw_conf,
+            "accuracy": calculate_accuracy(data),
+            "processing_time_seconds": processing_time
         }
 
         save_invoice_log(invoice_record)
@@ -89,9 +83,6 @@ async def process_invoice(files: List[UploadFile] = File(...)):
     return results
 
 
-# -------------------------
-# Get Logs
-# -------------------------
 @app.get("/logs")
 def get_logs():
 
@@ -102,19 +93,15 @@ def get_logs():
         return json.load(f)
 
 
-# -------------------------
-# Export Logs to CSV
-# -------------------------
 @app.get("/export-csv")
 def export_csv():
 
-    log_file = LOG_FILE
     csv_file = "logs/invoice_logs.csv"
 
-    if not os.path.exists(log_file):
+    if not os.path.exists(LOG_FILE):
         return {"message": "No logs available"}
 
-    with open(log_file, "r") as f:
+    with open(LOG_FILE, "r") as f:
         logs = json.load(f)
 
     if not logs:

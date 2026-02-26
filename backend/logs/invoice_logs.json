@@ -1,42 +1,74 @@
 [
     {
-        "timestamp": "2026-02-24 16:56:03",
+        "timestamp": "2026-02-26 14:19:36",
+        "file_name": "sample_invoice_2.pdf",
+        "vendor": null,
+        "invoice_number": "INV-2026-045",
+        "invoice_date": "15-01-2026",
+        "amount": 118000.0,
+        "tax": 18000.0,
+        "confidence": 0.8,
+        "accuracy": 0.8,
+        "processing_time_seconds": 28.15
+    },
+    {
+        "timestamp": "2026-02-26 14:19:54",
+        "file_name": "sample_invoice_1.pdf",
+        "vendor": null,
+        "invoice_number": "INV-2026-001",
+        "invoice_date": "24-02-2026",
+        "amount": 47200.0,
+        "tax": 7200.0,
+        "confidence": 0.8,
+        "accuracy": 0.8,
+        "processing_time_seconds": 18.63
+    },
+    {
+        "timestamp": "2026-02-26 14:22:27",
         "file_name": "sample_invoice_3.pdf",
         "vendor": "Zenith Consulting Group",
         "invoice_number": "INV-2026-078",
         "invoice_date": "05-02-2026",
         "amount": 90860.0,
         "tax": 13860.0,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "accuracy": 1.0,
+        "processing_time_seconds": 24.0
     },
     {
-        "timestamp": "2026-02-24 16:56:18",
+        "timestamp": "2026-02-26 14:22:45",
         "file_name": "sample_invoice_2.pdf",
         "vendor": "Apex Digital Systems",
         "invoice_number": "INV-2026-045",
         "invoice_date": "15-01-2026",
         "amount": 118000.0,
         "tax": 18000.0,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "accuracy": 1.0,
+        "processing_time_seconds": 18.94
     },
     {
-        "timestamp": "2026-02-24 16:56:32",
+        "timestamp": "2026-02-26 14:23:02",
         "file_name": "sample_invoice_1.pdf",
         "vendor": "TechNova Solutions Pvt Ltd",
         "invoice_number": "INV-2026-001",
         "invoice_date": "24-02-2026",
         "amount": 47200.0,
         "tax": 7200.0,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "accuracy": 1.0,
+        "processing_time_seconds": 16.88
     },
     {
-        "timestamp": "2026-02-24 16:56:48",
+        "timestamp": "2026-02-26 14:23:22",
         "file_name": "sample_invoice_test.pdf",
         "vendor": "TechNova Solutions Pvt Ltd",
         "invoice_number": "INV-2026-001",
         "invoice_date": "24-02-2026",
         "amount": 47200.0,
         "tax": 7200.0,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "accuracy": 1.0,
+        "processing_time_seconds": 19.79
     }
 ]
