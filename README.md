@@ -100,6 +100,17 @@ FastAPI (Dockerized)
         │
         └── Ollama Server (Dedicated GPU Machine)
 ```
+---
+## 📸 Product Screenshots
+
+### 📊 Dashboard Overview
+![Dashboard Overview](screenshots/dashboard-overview.jpeg)
+
+### 📈 Analytics & Revenue Insights
+![Dashboard Analytics](screenshots/dashboard-analytics.jpeg)
+
+### 📁 Invoice Logs & CSV Export
+![Invoice Logs](screenshots/invoice-logs.jpeg)
 
 ---
 
