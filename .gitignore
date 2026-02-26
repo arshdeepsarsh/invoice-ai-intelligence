@@ -11,3 +11,5 @@ frontend/dist/
 
 # Environment
 .env
+backend/logs/
+uploads/

@@ -1,4 +1,0 @@
-timestamp,file_name,vendor,invoice_number,invoice_date,amount,tax,confidence
-2026-02-24 14:29:41,sample_invoice_test.pdf,TechNova Solutions Pvt Ltd,INV-2026-001,24-02-2026,47200.0,7200.0,0.75
-2026-02-24 14:38:50,sample_invoice_test.pdf,TechNova Solutions Pvt Ltd,INV-2026-001,24-02-2026,47200.0,7200.0,0.75
-2026-02-24 14:45:44,sample_invoice_test.pdf,TechNova Solutions Pvt Ltd,INV-2026-001,24-02-2026,47200.0,7200.0,0.75
